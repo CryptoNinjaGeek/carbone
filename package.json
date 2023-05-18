@@ -29,7 +29,12 @@
     "debug": "=4.3.4",
     "which": "=2.0.2",
     "yauzl": "=2.10.0",
-    "yazl": "=2.5.1"
+    "yazl": "=2.5.1",
+    "fastq": "^1.15.0",
+    "html2json": "^1.0.2",
+    "moxie-zip": "=0.0.3",
+    "timsort": "=0.3.0",
+    "xml-js": "^1.6.11"
   },
   "devDependencies": {
     "mocha": "=9.2.2"
