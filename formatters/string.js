@@ -184,7 +184,7 @@ function convCRLF (d) {
   if (typeof d === 'string') {
     var _lineBreak = LINEBREAK[this.extension];
     if (_lineBreak) {
-      return d.replace(/\r?\n/g, _lineBreak);
+      return d.replace(/\\n|\r?\n/g, _lineBreak);
     }
   }
   return d;
@@ -286,6 +286,29 @@ function prepend (d, toPrepend) {
   return toPrepend + d;
 }
 
+function imageSize(d, width, height) {
+  if (width && height) return `${d}:${width}*${height}`;
+  if (width) return `${d}:${width}*${width}`;
+  return d;
+}
+
+function processLists(html) {
+  html = html.replace(/(<li>)(.+?)(<ul>)/, '$1$2</li><li>$3');
+  const lists = html.match(/(<li>)(?!(<ul>|<ol>))(.*?)(<\/li>)/g);
+  if(!lists) return html;
+  lists.forEach(list => {
+    html = html.replace(list, list.replace(/(<li>)(?!(<ul>|<ol>))(.*?)(<\/li>)/, '$1<span>{num}</span><p>$3</p><label> </label>$4'));
+  });
+  return html;
+}
+
+function html(d) {
+  const html2xml = require('../lib/html2xml');
+  d = processLists(d);
+  const html2XmlInstance = new html2xml(d);
+  return Buffer.from(html2XmlInstance.getXML()).toString('base64') + ':html';
+}
+
 module.exports = {
   lowerCase : lowerCase,
   upperCase : upperCase,
@@ -300,5 +323,7 @@ module.exports = {
   padl      : padl,
   padr      : padr,
   md5       : md5,
-  prepend   : prepend
+  prepend   : prepend,
+  imageSize : imageSize,
+  html      : html
 };
