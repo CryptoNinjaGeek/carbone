@@ -1,10 +1,12 @@
 {
-  "name": "carbone",
+  "name": "@CryptoNinjaGeek/carbone",
   "description": "Fast, Simple and Powerful report generator. Injects JSON and produces PDF, DOCX, XLSX, ODT, PPTX, ODS, ...!",
   "version": "3.5.5",
   "bin": "bin/carbone",
   "main": "./lib",
-  "author": "David Grelaud",
+  "author": {
+    "name": "Fork of the original work of David Grelaud"
+  },
   "license": "SEE LICENSE IN LICENSE.md",
   "homepage": "https://carbone.io",
   "keywords": [
