@@ -15,7 +15,7 @@ carbone.render('image.docx', JSON.parse(JSON.stringify(dataDOCXImage)), opt , fu
 });
 
 const dataDOCXHTML = {
-  html: 'Regular text <em>em</em> regular text <i>italic</i> regular text <strong>strong</strong> regular text <u>underline</u> regular text</p>'
+  html: 'Regular text <em>em</em> regular text <i>italic</i> regular text <strong>strong</strong> regular text <u>underline</u> regular text'
 };
 
 carbone.render('html.docx', dataDOCXHTML, opt, function (err, result) {
